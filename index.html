@@ -42,7 +42,7 @@
         let head = document.getElementById('head');
         let dbRef = firebase.database().ref().child('text');
         dbRef.on('value', function(snapshot) {
-            bigOne.innerText = snapshot.val();
+            head.innerText = snapshot.val();
         });
     </script>
 </body>
