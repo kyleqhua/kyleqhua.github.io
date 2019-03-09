@@ -1,5 +1,6 @@
+<html>
 <body>
-    <h1> Hi! My name is Kyle. This is a test </h1>
+    <h1 id = "head" > </h1>
     <img src="head.png" alt="me" width="500" height="600"/>
     <div id = intro>
         <h2>Education</h2>
@@ -23,6 +24,24 @@
                 
             </ul>
         </p>
-
     </div>
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        let config = {
+            apiKey: "AIzaSyBtYCRExBERnTmIOWOA5MLhko93oi_7I88",
+            authDomain: "emailtest-c5931.firebaseapp.com",
+            databaseURL: "https://emailtest-c5931.firebaseio.com",
+            projectId: "emailtest-c5931",
+            storageBucket: "emailtest-c5931.appspot.com",
+            messagingSenderId: "775804973647"
+        };
+        firebase.initializeApp(config);
+
+        let head = document.getElementById('head');
+        let dbRef = firebase.database().ref().child('text');
+        dbRef.on('value', snap => head.innerText =snap.val());
+    </script>
 </body>
+</html>
