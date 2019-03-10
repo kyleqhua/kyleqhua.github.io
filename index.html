@@ -30,11 +30,22 @@ limitations under the License.
     <script src="/__/firebase/5.8.5/firebase-app.js"></script>
     <script src="/__/firebase/5.8.5/firebase-auth.js"></script>
     <script src="/__/firebase/init.js"></script>
-
+    <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
     <script type="text/javascript">
         /**
          * Handles the sign in button press.
          */
+
+        const config = {
+            apiKey: "AIzaSyBtYCRExBERnTmIOWOA5MLhko93oi_7I88",
+            authDomain: "emailtest-c5931.firebaseapp.com",
+            databaseURL: "https://emailtest-c5931.firebaseio.com",
+            projectId: "emailtest-c5931",
+            storageBucket: "emailtest-c5931.appspot.com",
+            messagingSenderId: "775804973647"
+        };
+        firebase.initializeApp(config);
+
         function toggleSignIn() {
             if (firebase.auth().currentUser) {
                 // [START signout]
