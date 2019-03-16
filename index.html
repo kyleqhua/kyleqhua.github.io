@@ -43,21 +43,23 @@ limitations under the License.
         };
         firebase.initializeApp(config);
 
-        const database = firebase.database();
-        const ref = database.ref('emailtest-c5931').child('users');
-        const uid = "12345";
-        ref.child(uid).setValue({
-            // https://scotch.io/tutorials/use-expressjs-to-get-url-and-post-parameters
-            age: "99",
-            // email: req.body.email, //on firebase auth
-            firstname: "Hello",
-            lastname: "World",
-            // username: req.body.username, //on firebase auth
-            startLat:"12",
-            startLong:"34",
-            destLat:"56",
-            destLong: "78"
-        });
+        function createChild() {
+            const database = firebase.database();
+            const ref = database.ref('emailtest-c5931').child('users');
+            const uid = "12345";
+            ref.child(uid).setValue({
+                // https://scotch.io/tutorials/use-expressjs-to-get-url-and-post-parameters
+                age: "99",
+                // email: req.body.email, //on firebase auth
+                firstname: "Hello",
+                lastname: "World",
+                // username: req.body.username, //on firebase auth
+                startLat: "12",
+                startLong: "34",
+                destLat: "56",
+                destLong: "78"
+            });
+        }
         function toggleSignIn() {
             if (firebase.auth().currentUser) {
                 // [START signout]
@@ -207,6 +209,7 @@ limitations under the License.
             document.getElementById('quickstart-sign-up').addEventListener('click', handleSignUp, false);
             document.getElementById('quickstart-verify-email').addEventListener('click', sendEmailVerification, false);
             document.getElementById('quickstart-password-reset').addEventListener('click', sendPasswordReset, false);
+            document.getElementById('child-test').addEventListener('click', createChild, false);
         }
         window.onload = function() {
             initApp();
@@ -248,6 +251,7 @@ limitations under the License.
                     &nbsp;&nbsp;&nbsp;
                     <button class="mdl-button mdl-js-button mdl-button--raised" id="quickstart-password-reset" name="verify-email">Send Password Reset Email</button>
 
+                    <button class="mdl-button mdl-js-button mdl-button--raised" id="child-test" name="child">Create Child</button>
                     <!-- Container where we'll display the user details -->
                     <div class="quickstart-user-details-container">
                         Firebase sign-in status: <span id="quickstart-sign-in-status">Unknown</span>
