@@ -47,7 +47,7 @@ limitations under the License.
             const database = firebase.database();
             const ref = database.ref('emailtest-c5931').child('users');
             const uid = "12345";
-            ref.child(uid).setValue({
+            ref.child(uid).set({
                 // https://scotch.io/tutorials/use-expressjs-to-get-url-and-post-parameters
                 age: "99",
                 // email: req.body.email, //on firebase auth
