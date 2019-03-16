@@ -43,6 +43,21 @@ limitations under the License.
         };
         firebase.initializeApp(config);
 
+        const database = firebase.database();
+        const ref = database.ref('emailtest-c5931').child('users');
+        const uid = "12345";
+        ref.child(uid).setValue({
+            // https://scotch.io/tutorials/use-expressjs-to-get-url-and-post-parameters
+            age: "99",
+            // email: req.body.email, //on firebase auth
+            firstname: "Hello",
+            lastname: "World",
+            // username: req.body.username, //on firebase auth
+            startLat:"12",
+            startLong:"34",
+            destLat:"56",
+            destLong: "78"
+        });
         function toggleSignIn() {
             if (firebase.auth().currentUser) {
                 // [START signout]
