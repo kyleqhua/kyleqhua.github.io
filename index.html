@@ -126,9 +126,16 @@ limitations under the License.
                 // [END_EXCLUDE]
             });
             // [END createwithemail]
-            const user = firebase.auth().currentUser;
-            let uid = user.uid;
-            createChild(uid);
+            firebase.auth().onAuthStateChanged(function(user) {
+                if (user) {
+                    // User is signed in.
+                    let uid = user.uid;
+                    createChild(uid);
+                } else {
+                    // No user is signed in.
+                }
+            });
+
         }
         /**
          * Sends an email verification to the user.
