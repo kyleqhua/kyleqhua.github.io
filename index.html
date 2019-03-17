@@ -43,11 +43,10 @@ limitations under the License.
         };
         firebase.initializeApp(config);
 
-        let a = 1;
-        function createChild() {
+
+        function createChild(uid) {
             const database = firebase.database();
             const ref = database.ref('users')
-            const uid = "12345" + a;
             ref.child(uid).set({
                 // https://scotch.io/tutorials/use-expressjs-to-get-url-and-post-parameters
                 age: "99",
@@ -60,7 +59,6 @@ limitations under the License.
                 destLat: "56",
                 destLong: "78"
             });
-            a = a + 1;
         }
         function toggleSignIn() {
             if (firebase.auth().currentUser) {
@@ -128,6 +126,9 @@ limitations under the License.
                 // [END_EXCLUDE]
             });
             // [END createwithemail]
+            const user = firebase.auth().currentUser;
+            let uid = user.uid;
+            createChild(uid);
         }
         /**
          * Sends an email verification to the user.
